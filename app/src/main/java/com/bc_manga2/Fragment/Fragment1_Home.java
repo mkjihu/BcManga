@@ -45,7 +45,6 @@ public class Fragment1_Home extends BaseFragment implements BaseFragment.DataCal
 		super.onActivityCreated(savedInstanceState);
 		presenter = new Fragment1_HomePresenter(this);
 		EventBus.getDefault().register(this);//注册
-		Log.i("11","11");
 		presenter.GetHtmlDate(Shared.GetHomeUrl(getView().getContext()), false);
 		//iwillPaint = new IwillPaint(this.getContext(), "",1);
 		
