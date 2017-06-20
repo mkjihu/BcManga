@@ -1,7 +1,8 @@
-package com.bc_manga2;
+package com.bc_manga2.Activity;
 
 import java.util.concurrent.TimeUnit;
 
+import com.bc_manga2.R;
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jakewharton.rxbinding2.view.RxView;

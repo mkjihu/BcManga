@@ -5,12 +5,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import com.bc_manga2.ComicDirectoryPage;
+import com.bc_manga2.Activity.ComicDirectoryPage;
 import com.bc_manga2.R;
 import com.bc_manga2.Application.TagInfo;
-import com.bc_manga2.Model.EventBus.CollectionEvent;
 import com.bc_manga2.Model.EventBus.MessageEvent;
-import com.bc_manga2.Model.EventBus.YueduEvent;
 import com.bc_manga2.Presenter.Fragment2_YueduPresenter;
 import com.bc_manga2.View.maView;
 
@@ -20,7 +18,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.Log;
 import android.view.View;
 import de.greenrobot.BcComicdao.BcIndexData;
 

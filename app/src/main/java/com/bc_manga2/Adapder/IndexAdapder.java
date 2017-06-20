@@ -3,7 +3,7 @@ package com.bc_manga2.Adapder;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import com.bc_manga2.ComicDirectoryPage;
+import com.bc_manga2.Activity.ComicDirectoryPage;
 import com.bc_manga2.R;
 import com.bc_manga2.Resolve.Index.ItemComicIndex;
 import com.jakewharton.rxbinding2.view.RxView;

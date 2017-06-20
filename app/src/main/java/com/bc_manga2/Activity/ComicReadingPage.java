@@ -1,4 +1,4 @@
-package com.bc_manga2;
+package com.bc_manga2.Activity;
 
 
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import com.bc_manga2.Adapder.BaseReadingAdapder;
 import com.bc_manga2.Adapder.BaseReadingAdapder2;
 import com.bc_manga2.Application.Shared;
 import com.bc_manga2.Presenter.ComicReadingPresenter;
+import com.bc_manga2.R;
 import com.bc_manga2.Resolve.Index.ItemComicIndex;
 import com.bc_manga2.Ui.Fualay;
 import com.bc_manga2.Ui.Fualay.OnPrViewListener;
@@ -15,7 +16,7 @@ import com.bc_manga2.Ui.ViewPager.ViewPager2;
 import com.bc_manga2.Ui.ViewPager.ViewPager2.OnPageChangeListener;
 import com.bc_manga2.View.maView;
 import com.jakewharton.rxbinding2.view.RxView;
-import android.app.ActionBar;
+
 import android.app.ActionBar.LayoutParams;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;

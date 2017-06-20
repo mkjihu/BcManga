@@ -6,7 +6,7 @@
     android:background="@color/image_icback_color2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bc_manga2.ComicReadingPage" >
+    tools:context="com.bc_manga2.Activity.ComicReadingPage" >
 
 		<android.support.v7.widget.RecyclerView
 		    android:id="@+id/recycler_view"

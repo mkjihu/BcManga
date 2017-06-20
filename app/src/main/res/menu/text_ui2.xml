@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.bc_manga2.TextUI2Activity" >
+    tools:context="com.bc_manga2.Activity.TextUI2Activity" >
 
     <item
         android:id="@+id/action_settings"

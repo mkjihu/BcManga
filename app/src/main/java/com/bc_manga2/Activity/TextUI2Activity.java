@@ -1,9 +1,10 @@
-package com.bc_manga2;
+package com.bc_manga2.Activity;
 
 import java.util.ArrayList;
 
 import com.andview.refreshview.XRefreshView;
 import com.andview.refreshview.XRefreshViewFooter;
+import com.bc_manga2.R;
 
 import android.os.Bundle;
 import android.os.Handler;

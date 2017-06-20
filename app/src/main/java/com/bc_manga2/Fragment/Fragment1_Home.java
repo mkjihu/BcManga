@@ -5,7 +5,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import com.bc_manga2.ComicDirectoryPage;
+import com.bc_manga2.Activity.ComicDirectoryPage;
 import com.bc_manga2.R;
 import com.bc_manga2.Application.Shared;
 import com.bc_manga2.Application.TagInfo;
@@ -13,7 +13,6 @@ import com.bc_manga2.Model.EventBus.MessageEvent;
 import com.bc_manga2.Presenter.Fragment1_HomePresenter;
 import com.bc_manga2.Resolve.Home.ItemRotation;
 import com.bc_manga2.View.maView;
-import com.bc_manga2.obj.IwillPaint;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +24,6 @@ import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.Log;
 import android.view.View;
-import de.greenrobot.BcComicdao.BcIndexData;
 
 public class Fragment1_Home extends BaseFragment implements BaseFragment.DataCallback,maView,SwipeRefreshLayout.OnRefreshListener
 {

@@ -2,7 +2,7 @@ package com.bc_manga2.Presenter;
 
 import java.util.ArrayList;
 import org.reactivestreams.Subscription;
-import com.bc_manga2.SortFinePage;
+import com.bc_manga2.Activity.SortFinePage;
 import com.bc_manga2.Application.BcApplication;
 import com.bc_manga2.Application.GivenHttp;
 import com.bc_manga2.Model.Category;

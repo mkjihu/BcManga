@@ -4,14 +4,13 @@ import java.util.ArrayList;
 
 import org.reactivestreams.Subscription;
 
-import com.bc_manga2.ComicReading2Page;
+import com.bc_manga2.Activity.ComicReading2Page;
 import com.bc_manga2.Application.BcApplication;
 import com.bc_manga2.Fragment.Fragment_ComicItem;
 import com.bc_manga2.Resolve.Index.ItemComicIndex;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import de.greenrobot.BcComicdao.BcIndexData;
 import de.greenrobot.BcComicdao.BcIndexDataDao;

@@ -1,4 +1,4 @@
-package com.bc_manga2;
+package com.bc_manga2.Activity;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -7,6 +7,7 @@ import com.andview.refreshview.XRefreshViewFooter;
 import com.base.BackActivity.SwipeBackActivity;
 import com.bc_manga2.Adapder.SortFineAdapder;
 import com.bc_manga2.Presenter.SortFinePresenter;
+import com.bc_manga2.R;
 import com.bc_manga2.Resolve.SortFine.SortFineItem;
 import com.bc_manga2.View.maView;
 import com.bc_manga2.obj.ToastUnity;

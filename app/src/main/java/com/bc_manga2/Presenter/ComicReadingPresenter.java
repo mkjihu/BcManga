@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.reactivestreams.Subscription;
 
-import com.bc_manga2.ComicReadingPage;
+import com.bc_manga2.Activity.ComicReadingPage;
 import com.bc_manga2.Adapder.BaseReadingAdapder;
 import com.bc_manga2.Adapder.BaseReadingAdapder2;
 import com.bc_manga2.Adapder.Reading1Adapder;

@@ -1,8 +1,10 @@
-package com.bc_manga2;
+package com.bc_manga2.Activity;
 
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
+
+import com.bc_manga2.R;
 import com.bc_manga2.Ui.ProgressBar.ArrowDownloadButton;
 import com.bc_manga2.View.maView;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -10,7 +12,6 @@ import com.jakewharton.rxbinding2.view.RxView;
 import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;

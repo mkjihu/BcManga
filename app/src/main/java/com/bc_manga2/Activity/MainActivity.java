@@ -1,4 +1,4 @@
-package com.bc_manga2;
+package com.bc_manga2.Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,7 @@ import com.bc_manga2.Fragment.Fragment1_Home;
 import com.bc_manga2.Fragment.Fragment2_Record;
 import com.bc_manga2.Fragment.Fragment3_Search;
 import com.bc_manga2.Fragment.Fragment4_Settings;
-import com.bc_manga2.Fragment.FragmentA;
-import com.bc_manga2.Fragment.FragmentC;
-import com.bc_manga2.Fragment.FragmentD;
+import com.bc_manga2.R;
 import com.bc_manga2.Ui.NoScrollViewPager;
 import com.bc_manga2.View.maView;
 import com.jakewharton.rxbinding2.view.RxView;

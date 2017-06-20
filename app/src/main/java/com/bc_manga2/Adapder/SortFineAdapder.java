@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import com.bc_manga2.R;
-import com.bc_manga2.SortFinePage;
+import com.bc_manga2.Activity.SortFinePage;
 import com.bc_manga2.Resolve.SortFine.SortFineItem;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jakewharton.rxbinding2.view.RxView;

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.reactivestreams.Subscription;
 
-import com.bc_manga2.ComicDirectoryPage;
+import com.bc_manga2.Activity.ComicDirectoryPage;
 import com.bc_manga2.Adapder.IndexAdapder;
 import com.bc_manga2.Application.BcApplication;
 import com.bc_manga2.Model.Cminfo;
@@ -24,7 +24,6 @@ import de.greenrobot.BcComicdao.BcIndexDataDao;
 import de.greenrobot.BcComicdao.BcIndexDataDao.Properties;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.exceptions.Exceptions;

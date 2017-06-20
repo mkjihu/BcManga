@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.bc_manga2.ComicDirectoryPage" >
+    tools:context="com.bc_manga2.Activity.ComicDirectoryPage" >
 
     <item
         android:id="@+id/action_settings"

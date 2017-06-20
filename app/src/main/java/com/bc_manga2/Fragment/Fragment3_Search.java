@@ -4,7 +4,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import com.bc_manga2.R;
-import com.bc_manga2.SortFinePage;
+import com.bc_manga2.Activity.SortFinePage;
 import com.bc_manga2.Application.TagInfo;
 import com.bc_manga2.Model.EventBus.MessageEvent;
 import com.bc_manga2.Presenter.Fragment3_SearchPresenter;
