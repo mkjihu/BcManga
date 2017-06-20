@@ -1,8 +1,12 @@
 package com.bc_manga2.Presenter;
 
+import android.support.v7.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscription;
 
 import com.bc_manga2.Activity.ComicDirectoryPage;
@@ -14,17 +18,18 @@ import com.bc_manga2.Resolve.Index.AI_Ck101;
 import com.bc_manga2.Resolve.Index.BI_Ck101;
 import com.bc_manga2.Resolve.Index.BI_k886;
 import com.bc_manga2.Resolve.Index.ItemComicIndex;
+import com.bc_manga2.obj.LogU;
 import com.bc_manga2.obj.ToastUnity;
 import com.bc_manga2.obj.UnicodeDecoder;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import android.util.Log;
 import de.greenrobot.BcComicdao.BcIndexData;
 import de.greenrobot.BcComicdao.BcIndexDataDao;
 import de.greenrobot.BcComicdao.BcIndexDataDao.Properties;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.exceptions.Exceptions;
 import io.reactivex.functions.Consumer;
@@ -36,6 +41,8 @@ import io.reactivex.subscribers.DisposableSubscriber;
 
 public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 
+	public int EmptyData = 0;//空數據獲取狀態//--0為正常
+	public boolean interpretp;
 	public ComicDirectoryPresenter(ComicDirectoryPage view) {
 		super(view);
 	}
@@ -43,8 +50,9 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 	 * @param Url 連接
 	 * @param interpret 是否二度解析
 	 */
-	public void GetIndexDate(final String HomePK,final String Url,final boolean interpret)
+	public void GetIndexDate(final String HomePK,final String Url,boolean interpret)
 	{
+		this.interpretp = interpret;
 		Disposable d = isMobile(HomePK,Url)
 				
 				.subscribeOn(Schedulers.io())//--跑在線程背後--只讀一次
@@ -61,14 +69,18 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 					@Override
 					public Flowable<String> apply(String Html) throws Exception {
 						//--由interpret 決定是否要取得正確資料Url
-						//Log.i("跑2", "跑2"+Html);
+						LogU.i("正確資料", "正確資料1"+Html);
+						if(Html.equals("")) {
+							EmptyData = 1;
+						}
+
 						switch (HomePK) {//--判定主站URL
 						case "ck101":
-							return new AI_Ck101("http://comic.ck101.com",Html, interpret).GetHtml();
+							return new AI_Ck101("http://comic.ck101.com",Html, interpretp).GetHtml();
 						case "k886":
 							return Flowable.just(Html);//-直接傳出回傳資料
 						default:
-							return new AI_Ck101("http://comic.ck101.com",Html, interpret).GetHtml();
+							return new AI_Ck101("http://comic.ck101.com",Html, interpretp).GetHtml();
 						}
 					}
 				})
@@ -76,14 +88,13 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 					@Override
 					public Flowable<ArrayList<ItemComicIndex>> apply(String Html) throws Exception {
 						//-這裡取得正確資料得HTML-並且下傳要抓取所有項目的Urls
-						
-						//Log.i("正確資料", "正確資料2"+Html);
+						//LogU.i("正確資料", "正確資料2"+Html);
 						switch (HomePK) {
 						case "ck101":
-							BI_Ck101 b = new BI_Ck101(Html,Url,"ck101", interpret); 
+							BI_Ck101 b = new BI_Ck101(Html,Url,"ck101", interpretp);
 							return b.CC(new SetInfo());
 						case "k886":
-							BI_k886 bi_k886 = new BI_k886(Html,Url, "k886", interpret);
+							BI_k886 bi_k886 = new BI_k886(Html,Url, "k886", interpretp);
 							return bi_k886.CC(new SetInfo());
 						default:
 							return null;
@@ -94,7 +105,7 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 				.map(new Function<ArrayList<ItemComicIndex>, IndexAdapder>() {
 					@Override
 					public IndexAdapder apply(ArrayList<ItemComicIndex> comicIndexs) throws Exception {
-						Log.i("項目", comicIndexs.size()+"");	
+						LogU.i("項目", comicIndexs.size()+"");
 						/*
 						Log.i("項目", comicIndexs.size()+"");	
 						Log.i("項目",  comicIndexs.get(488).getItemName()+"_"+comicIndexs.get(488).getItemUrl());	
@@ -115,8 +126,8 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 				.onErrorResumeNext(new Function<Throwable, Flowable<IndexAdapder>>() {
 					@Override
 					public Flowable<IndexAdapder> apply(Throwable arg0) throws Exception {
-						Log.i("出错C", arg0.getMessage());
-						return ErrorState(Url, new SetInfo());
+						LogU.i("出错C", arg0.getMessage());
+						return ErrorState(HomePK,Url, new SetInfo());
 					}
 				 })
 				//.onBackpressureBuffer()//加上背压策略 - 無限大
@@ -125,7 +136,7 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 			   	.subscribeWith(new DisposableSubscriber<IndexAdapder>() {
 					@Override
 					public void onError(Throwable arg0) {
-						Log.i("GG", arg0.getMessage());
+						LogU.i("GG", arg0.getMessage());
 						ToastUnity.ShowTost(getView(), arg0.getMessage());
 						getView().offRefresh();
 					}
@@ -145,19 +156,25 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 	 * 傳入加載URL去DB找
 	 * @return 
 	 * */
-	public Flowable<IndexAdapder> ErrorState(String Url,Function<BcIndexData, String> map)
+	public Flowable<IndexAdapder> ErrorState(final String HomePK,String Url,Function<BcIndexData, String> map)
 	{
 		return Flowable.just(Url)
 				.observeOn(Schedulers.io())
-				.map(new Function<String, BcIndexData>() {
+				.flatMap(new Function<String, Flowable<BcIndexData>>() {
 					@Override
-					public BcIndexData apply(String Url) throws Exception {
+					public Flowable<BcIndexData> apply(@NonNull String Url) throws Exception {
 						BcIndexDataDao bcIndexDataDao = BcApplication.getInstance().getDaoSession().getBcIndexDataDao();
 						BcIndexData bcIndexData = bcIndexDataDao.queryBuilder().where(Properties.PKUrl.eq(Url)).unique();
 						if (bcIndexData !=null) {
-							return bcIndexData;
+							return Flowable.just(bcIndexData);
 						}else {
-							throw Exceptions.propagate(new RuntimeException("解析錯誤"));
+							if (EmptyData==1) {
+
+								return EmptyDataAcquisition(HomePK,Url);//-無限重覆取數據
+							} else {
+								throw Exceptions.propagate(new RuntimeException("解析錯誤"));
+							}
+
 						}
 					}
 				})
@@ -178,8 +195,73 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 					}
 				});
 	}
-	
-	
+
+	/**取到數據為止*/
+	public Flowable<BcIndexData> EmptyDataAcquisition(final String HomePK,final String Url)
+	{
+		return  isMobile(HomePK,Url)
+				.retryWhen(new HttpApiClient.RetryWithDelay(10, 1000))//总共重试10次，重试间隔1秒
+				.repeatWhen(new Function<Flowable<Object>, Publisher<?>>() {
+					@Override
+					public Publisher<?> apply(@NonNull Flowable<Object> observable) throws Exception {
+						/**这个方法只会被调用一次。1 表示每次重复的调用（repeated call）会被延迟1s。*/
+						//LogU.i("輪詢", "2秒後-重查");
+						return observable.delay(2, TimeUnit.SECONDS);
+					}
+				})
+				.takeUntil(new Predicate<String>() {
+					@Override
+					public boolean test(@NonNull String s) throws Exception {
+						if (s.equals("")) {
+							return false;//-繼續輪巡
+						} else {
+							return true;
+						}
+					}
+				})
+				.filter(new Predicate<String>() {
+					@Override
+					public boolean test(@NonNull String s) throws Exception {
+						if (s.equals("")) {
+							return false;//-繼續輪巡
+						} else {
+							return true;
+						}
+					}
+				})
+				.flatMap(new Function<String, Flowable<String>>() {
+					@Override
+					public Flowable<String> apply(String Html) throws Exception {
+						//--由interpret 決定是否要取得正確資料Url
+
+						switch (HomePK) {//--判定主站URL
+							case "ck101":
+								return new AI_Ck101("http://comic.ck101.com",Html, interpretp).GetHtml();
+							case "k886":
+								return Flowable.just(Html);//-直接傳出回傳資料
+							default:
+								return new AI_Ck101("http://comic.ck101.com",Html, interpretp).GetHtml();
+						}
+					}
+				})
+				.concatMap(new Function<String, Flowable<BcIndexData>>() {
+					@Override
+					public Flowable<BcIndexData> apply(String Html) throws Exception {
+						//-這裡取得正確資料得HTML-
+						// LogU.i("輪詢資料", "重查"+Html);
+						switch (HomePK) {
+							case "ck101":
+								BI_Ck101 b = new BI_Ck101(Html,Url,"ck101", interpretp);
+								return b.EmptyData();
+							case "k886":
+								BI_k886 bi_k886 = new BI_k886(Html,Url, "k886", interpretp);
+								return bi_k886.EmptyData();
+							default:
+								return null;
+						}
+					}
+				});
+	}
 	
 	
 	public class SetInfo implements Function<BcIndexData, String> {
@@ -207,124 +289,9 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 			return HttpApiClient.getInstance().GetHtml_F(Url);
 		}
 	}
-	
-	//============k88 有API試寫==============
-	public void GetIndexDate_Api(final String Url,final String id) {
 
-		Disposable s = Flowable
-							.range(1, Integer.MAX_VALUE)
-							.subscribeOn(Schedulers.io())
-							.concatMap(new Function<Integer, Flowable<String>>() {
-								@Override
-								public Flowable<String> apply(Integer arg0) throws Exception {
-									String murl = String.format(Url, id)+arg0;//串API URL
-									
-									if (arg0==1) { //-如果是第一頁就先取基本資料
-										return HttpApiClient.getInstance()
-												.GetHtml_F(murl)
-												.subscribeOn(Schedulers.io())
-												.observeOn(AndroidSchedulers.mainThread())//--結果在主線程中顯示  
-												.map(new Function<String, String>() {
-													@Override
-													public String apply(String arg0) throws Exception {
-														String okstr = UnicodeDecoder.decode(arg0);//--轉Unicode碼
-														Cminfo cminfo = new Gson().fromJson(okstr, Cminfo.class);
-														
-														/*
-														 *
-														 * 
-														 * 未完成
-														 * 
-														 * 
-														 */
-																												
-														return arg0;
-													}
-												});
-									}
-									return HttpApiClient.getInstance().GetHtml_F(murl);
-								}
-							})
-							/**///--方法1  TakeWhile发射原始Observable，直到你指定的某个条件不成立的那一刻，它停止发射原始Observable，并终止自己的Observable。
-							.takeWhile(new Predicate<String>() {
-								@Override
-								public boolean test(String arg0) throws Exception {
-									String okstr = UnicodeDecoder.decode(arg0);//--轉Unicode碼
-									Cminfo cminfo = new Gson().fromJson(okstr, Cminfo.class);
-									if (cminfo.getmSelectArray() != null) {
-										return true;
-									} else { //-回传资料条件不成立---停止
-										return false;
-									}
-								}
-							})
-							.toList().toFlowable()
-							.map(new Function<List<String>, String>() {
-								@Override
-								public String apply(List<String> arg0) throws Exception {
-									
-									for (int i = 0; i < arg0.size(); i++) {
-										String okstr = UnicodeDecoder.decode(arg0.get(i));//--轉Unicode碼
-										Cminfo cminfo = new Gson().fromJson(okstr, Cminfo.class);
-										for (int j = 0; j < cminfo.getmSelectArray().size(); j++) {
-											Log.i("OK", cminfo.getmSelectArray().get(j).getName());
-										}
-									}
-									return  arg0.size()+"";
-								}
-							})
-							/**
-							  * 錯誤或是沒有網路時攔截
-							  * onErrorReturn()，在遇到错误时发射一个特定的数据
-							  * onErrorResumeNext()，在遇到错误时发射一个数据序列
-							  */
-							 .onErrorReturn(new Function<Throwable, String>() {
-								@Override
-								public String apply(Throwable arg0) throws Exception {
-									return arg0.getMessage();
-								}
-							})
-							.observeOn(AndroidSchedulers.mainThread())//--結果在主線程中顯示  
-							.unsubscribeOn(Schedulers.io())//允許取消訂閱  
-							.subscribeWith(new DisposableSubscriber<String>() {
-								@Override
-								public void onError(Throwable arg0) {
-								}
-								
-								@Override
-								public void onNext(String arg0) {
-									
-								}
-								@Override
-								public void onComplete() {
-									
-								}
-					        });
+	
 
-				 
-		getDisposable().add(s);
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//===========================收藏==================================
 	
 	public void KeepData(String  Index_PKUrl)
@@ -349,12 +316,12 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 			   	.unsubscribeOn(Schedulers.io())//允許取消訂閱  
 				.subscribeWith(new DisposableObserver<Boolean>() {
 					@Override
-					public void onError(Throwable arg0) { 
-						Log.i("GG2G", arg0.getMessage());
+					public void onError(Throwable arg0) {
+						LogU.i("GG2G", arg0.getMessage());
 					}
 					@Override
 					public void onNext(Boolean arg0) {
-						Log.i("開始收藏", arg0+"");
+						LogU.i("開始收藏", arg0+"");
 						getView().SetKeepChecked(arg0);
 					}
 					@Override
@@ -384,8 +351,8 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 			   	.unsubscribeOn(Schedulers.io())//允許取消訂閱  
 			   	.subscribeWith(new DisposableObserver<String>() {
 					@Override
-					public void onError(Throwable arg0) { 
-						Log.i("GG2G", arg0.getMessage());
+					public void onError(Throwable arg0) {
+						LogU.i("GG2G", arg0.getMessage());
 					}
 					@Override
 					public void onNext(String arg0) {
@@ -396,5 +363,118 @@ public class ComicDirectoryPresenter extends BasePresenter<ComicDirectoryPage>{
 				});
 		getDisposable().add(d);
 	}
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//============k88 有API試寫==============
+	public void GetIndexDate_Api(final String Url,final String id) {
+
+		Disposable s = Flowable
+				.range(1, Integer.MAX_VALUE)
+				.subscribeOn(Schedulers.io())
+				.concatMap(new Function<Integer, Flowable<String>>() {
+					@Override
+					public Flowable<String> apply(Integer arg0) throws Exception {
+						String murl = String.format(Url, id)+arg0;//串API URL
+
+						if (arg0==1) { //-如果是第一頁就先取基本資料
+							return HttpApiClient.getInstance()
+									.GetHtml_F(murl)
+									.subscribeOn(Schedulers.io())
+									.observeOn(AndroidSchedulers.mainThread())//--結果在主線程中顯示
+									.map(new Function<String, String>() {
+										@Override
+										public String apply(String arg0) throws Exception {
+											String okstr = UnicodeDecoder.decode(arg0);//--轉Unicode碼
+											Cminfo cminfo = new Gson().fromJson(okstr, Cminfo.class);
+
+														/*
+														 *
+														 *
+														 * 未完成
+														 *
+														 *
+														 */
+
+											return arg0;
+										}
+									});
+						}
+						return HttpApiClient.getInstance().GetHtml_F(murl);
+					}
+				})
+							/**///--方法1  TakeWhile发射原始Observable，直到你指定的某个条件不成立的那一刻，它停止发射原始Observable，并终止自己的Observable。
+				.takeWhile(new Predicate<String>() {
+					@Override
+					public boolean test(String arg0) throws Exception {
+						String okstr = UnicodeDecoder.decode(arg0);//--轉Unicode碼
+						Cminfo cminfo = new Gson().fromJson(okstr, Cminfo.class);
+						if (cminfo.getmSelectArray() != null) {
+							return true;
+						} else { //-回传资料条件不成立---停止
+							return false;
+						}
+					}
+				})
+				.toList().toFlowable()
+				.map(new Function<List<String>, String>() {
+					@Override
+					public String apply(List<String> arg0) throws Exception {
+
+						for (int i = 0; i < arg0.size(); i++) {
+							String okstr = UnicodeDecoder.decode(arg0.get(i));//--轉Unicode碼
+							Cminfo cminfo = new Gson().fromJson(okstr, Cminfo.class);
+							for (int j = 0; j < cminfo.getmSelectArray().size(); j++) {
+								LogU.i("OK", cminfo.getmSelectArray().get(j).getName());
+							}
+						}
+						return  arg0.size()+"";
+					}
+				})
+				/**
+				 * 錯誤或是沒有網路時攔截
+				 * onErrorReturn()，在遇到错误时发射一个特定的数据
+				 * onErrorResumeNext()，在遇到错误时发射一个数据序列
+				 */
+				.onErrorReturn(new Function<Throwable, String>() {
+					@Override
+					public String apply(Throwable arg0) throws Exception {
+						return arg0.getMessage();
+					}
+				})
+				.observeOn(AndroidSchedulers.mainThread())//--結果在主線程中顯示
+				.unsubscribeOn(Schedulers.io())//允許取消訂閱
+				.subscribeWith(new DisposableSubscriber<String>() {
+					@Override
+					public void onError(Throwable arg0) {
+					}
+
+					@Override
+					public void onNext(String arg0) {
+
+					}
+					@Override
+					public void onComplete() {
+
+					}
+				});
+
+
+		getDisposable().add(s);
+	}
+
+
+
+
+
 }

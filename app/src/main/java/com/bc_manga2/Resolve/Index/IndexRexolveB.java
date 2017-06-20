@@ -3,13 +3,18 @@ package com.bc_manga2.Resolve.Index;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
+import org.reactivestreams.Publisher;
 
 import com.bc_manga2.Application.BcApplication;
+import com.bc_manga2.Model.Cminfo;
 import com.bc_manga2.Network.HttpApiClient;
 import com.bc_manga2.Presenter.ComicDirectoryPresenter.SetInfo;
+import com.bc_manga2.obj.LogU;
+import com.bc_manga2.obj.UnicodeDecoder;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import android.util.Log;
@@ -18,7 +23,9 @@ import de.greenrobot.BcComicdao.BcIndexDataDao;
 import de.greenrobot.BcComicdao.BcIndexDataDao.Properties;
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 //第二階段 先解析資料跟加載所需url 列表
@@ -221,6 +228,82 @@ abstract class IndexRexolveB implements DBAction
 			return AA(b_map);
 		}
 	}
-	
-	
+
+	/**HTML重載 直接存入DB 並取出 2017 06 20*/
+	public Flowable<BcIndexData> EmptyData() {
+		return  Flowable.just(b(Html))
+				.observeOn(Schedulers.io())
+				.map(new Function<BcIndexData, ArrayList<String>>() {
+					@Override
+					public ArrayList<String> apply(BcIndexData arg0) throws Exception {
+
+						return HtmlItemUrls(Html);
+					}
+				})
+				.concatMap(new Function<ArrayList<String> , Flowable<List<String>>>() {
+					@Override
+					public Flowable<List<String>> apply(ArrayList<String> arg0) throws Exception {
+
+						LogU.i("有","有"+arg0.get(0));
+						return Flowable.fromIterable(arg0)
+								.concatMap(new Function<String, Flowable<String>>() {
+									@Override
+									public Flowable<String> apply(String Url) throws Exception {
+										//return HttpApiClient.getHtml(Url);
+										return Repeat(Url);
+									}
+								})
+								.toList().toFlowable();
+					}
+				})
+				.map(new Function<List<String>, BcIndexData>() {
+					@Override
+					public BcIndexData apply(List<String> arg0) throws Exception {
+						LogU.i("內輪詢", "重查List"+arg0.size());
+						ArrayList<ItemComicIndex> arrayList = HtmlItems(arg0);
+						String ItemArrayGSON = new Gson().toJson(arrayList);
+						bcIndexData.setItemArrayGSON(ItemArrayGSON);
+						bcIndexData.setClickDate(new Date());
+						bcIndexDataDao.insertOrReplace(bcIndexData);
+						return bcIndexData;
+					}
+				});
+	}
+
+
+	//-重覆輪巡
+	private Flowable<String> Repeat(String Url)
+	{
+		return  HttpApiClient.getHtml(Url)
+				.retryWhen(new HttpApiClient.RetryWithDelay(20, 1000))//总共重试10次，重试间隔1秒
+				.repeatWhen(new Function<Flowable<Object>, Publisher<?>>() {
+					@Override
+					public Publisher<?> apply(@NonNull Flowable<Object> observable) throws Exception {
+						LogU.i("內輪詢", "2秒後-重查");
+						return observable.delay(1, TimeUnit.SECONDS);
+					}
+				})
+				.takeUntil(new Predicate<String>() {
+					@Override
+					public boolean test(@NonNull String s) throws Exception {
+						if (s.equals("")) {
+							return false;//-繼續輪巡
+						} else {
+							return true;
+						}
+					}
+				})
+				.filter(new Predicate<String>() {
+					@Override
+					public boolean test(@NonNull String s) throws Exception {
+						if (s.equals("")) {
+							return false;//-繼續輪巡
+						} else {
+							return true;
+						}
+					}
+				});
+	}
+
+
 }

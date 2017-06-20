@@ -32,7 +32,7 @@ public class BI_k886 extends IndexRexolveB{
 		bcIndexData.setAuthorName(cminfo.getmAuthor());
 		bcIndexData.setType(cminfo.getmType());
 		bcIndexData.setUpdated_day(cminfo.getmDate());
-		Log.i("1", cminfo.getmIntroduction());
+		//Log.i("1", cminfo.getmIntroduction());
 		bcIndexData.setGist(cminfo.getmIntroduction());
 		
 		return bcIndexData;

@@ -1,10 +1,8 @@
 package com.bc_manga2.Presenter;
-
-import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscription;
 import com.bc_manga2.R;
@@ -16,8 +14,6 @@ import com.bc_manga2.Resolve.Home.Resolve_Ck101;
 import com.bc_manga2.Resolve.Home.Resolves_k886;
 import com.bc_manga2.obj.LogU;
 import com.bc_manga2.obj.ToastUnity;
-
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import io.reactivex.Flowable;
@@ -26,6 +22,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.DisposableSubscriber;
 import okhttp3.ResponseBody;
@@ -158,10 +155,80 @@ public class Fragment1_HomePresenter extends BasePresenter<Fragment1_Home> {
 	}
 
 
-	/**取到手數據為止*/
-	public Flowable<Adapter<ViewHolder>> EmptyDataAcquisition(String Url)
+	/**取到數據為止*/
+	public Flowable<Adapter<ViewHolder>> EmptyDataAcquisition(final String Url)
 	{
-		return null;
+		return isMobile(Url)
+				.retryWhen(new HttpApiClient.RetryWithDelay(10, 1000))//总共重试10次，重试间隔1秒
+				.repeatWhen(new Function<Flowable<Object>, Publisher<?>>() {
+					@Override
+					public Publisher<?> apply(@NonNull Flowable<Object> observable) throws Exception {
+						/**这个方法只会被调用一次。1 表示每次重复的调用（repeated call）会被延迟1s。*/
+						LogU.i("輪詢", "1秒後-重查");
+						return observable.delay(2, TimeUnit.SECONDS);
+					}
+				})
+				.takeUntil(new Predicate<String>() {
+					@Override
+					public boolean test(@NonNull String s) throws Exception {
+						/** 在这里，我们可以检查服务器返回的数据是否正确，和决定我们是否应该
+						 *  停止轮询。
+						 *  当服务器的任务完成时，我们停止轮询。
+						 *  换句话说，“当任务（job）完成时，我们不拿（take）了”
+						 */
+						if (s.equals("")) {
+							return false;//-繼續輪巡
+						} else {
+							return true;
+						}
+					}
+				})
+				.filter(new Predicate<String>() {
+					@Override
+					public boolean test(@NonNull String s) throws Exception {
+						/**
+						 * 如果我们在这里返回“false”的话，那这个结果会被过滤掉（filter）
+						 * 过滤（Filtering） 表示 onNext() 不会被调用.
+						 * 但是 onComplete() 仍然会被传递.
+						 */
+						if (s.equals("")) {
+							return false;//-繼續輪巡
+						} else {
+							return true;
+						}
+					}
+				})
+				//.timeout(20, TimeUnit.SECONDS)///超時為10 秒
+
+				.map(new Function<String, Adapter<ViewHolder>>()  {
+					@Override
+					public Adapter<ViewHolder> apply(String Html) throws Exception {
+
+						String Home = Shared.GetHomeUrlkey(getView().getContext());
+						LogU.i("轮询內容", "A)A"+Html);
+						LogU.i("轮询Home", Home);
+						if (Html.equals("")) { //-獲取空數據 重新取
+							EmptyData = 1;
+						}
+						switch (Home) {
+							case "ck101":
+								return new Resolve_Ck101(Home , Html , Url , getView()).SendAdapter(true);
+							case "k886":
+								return new Resolves_k886(Home , Html , Url , getView()).SendAdapter(true);
+							default:
+								return new Resolve_Ck101(Home , Html , Url , getView()).SendAdapter(true);
+						}
+					}
+				})
+				;
+
+
+
+
+
+
+
+
 	}
 
 }
