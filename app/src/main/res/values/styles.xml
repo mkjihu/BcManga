@@ -1,0 +1,139 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+
+		 <!-- <item name="android:windowDisablePreview">true</item> 禁止window预览效果 -->
+        <!-- <item name= "android:windowIsTranslucent" >true</item> 是否引用新式动画开关-->
+        <item name= "android:windowIsTranslucent">true</item>
+
+         <!--  <item name="android:windowBackground">@android:color/transparent</item> --> <!--設置透明背景 -->
+        
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item> -->
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item><!-- 不需要 ActionBar 了,因為改用Toolbar -->
+        <!--<item name="android:windowActionBar">false</item>-->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    
+    
+    <!-- 各API通用的基底theme -->
+    <style name="MyMaterialTheme.Base2" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+
+
+        <!-- <item name= "android:windowIsTranslucent" >true</item> 是否引用新式动画开关-->
+        <item name= "android:windowIsTranslucent">true</item>
+
+       <!-- <item name="android:windowBackground">@android:color/transparent</item>  設置透明背景 -->
+        
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item> -->
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item><!-- 不需要 ActionBar 了,因為改用Toolbar -->
+        <!--<item name="android:windowActionBar">false</item>-->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    
+    <!-- 圖片流覽頁專用 -->
+    <style name="MyMaterialTheme.Base3" parent="Theme.AppCompat">
+        <!-- Customize your theme here
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+		-->
+
+
+        <!-- <item name= "android:windowIsTranslucent" >true</item> 是否引用新式动画开关-->
+        <item name= "android:windowIsTranslucent">true</item>
+
+       <!-- <item name="android:windowBackground">@android:color/transparent</item>  設置透明背景 -->
+        
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item> -->
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item><!-- 不需要 ActionBar 了,因為改用Toolbar -->
+        <!--<item name="android:windowActionBar">false</item>-->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    
+    
+    
+    
+    
+    
+    <style name="PopupAnimation" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@animator/popup_in</item>
+        <item name="android:windowExitAnimation">@animator/popup_out</item>
+    </style>
+
+    <style name="PopupAnimationLeft" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@animator/popup_leftin</item>
+        <item name="android:windowExitAnimation">@animator/popup_leftout</item>
+    </style>
+
+    <style name="PopupAnimationRight" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@animator/popup_rightin</item>
+        <item name="android:windowExitAnimation">@animator/popup_rightout</item>
+    </style>
+
+    <style name="PopupAnimationTop" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@animator/popup_topin</item>
+        <item name="android:windowExitAnimation">@animator/popup_topout</item>
+    </style>
+  
+  	<style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+    	<item name="android:textSize">18sp</item>
+    	<item name="android:textStyle">bold</item>
+	</style>  
+    
+	<style name="AVLoadingIndicatorView">
+		<item name="minWidth">48dip</item>
+		<item name="maxWidth">48dip</item>
+		<item name="minHeight">48dip</item>
+		<item name="maxHeight">48dip</item>
+		<item name="indicatorName">BallPulseIndicator</item>
+	</style>
+
+	<style name="AVLoadingIndicatorView.Large">
+		<item name="minWidth">76dip</item>
+		<item name="maxWidth">76dip</item>
+		<item name="minHeight">76dip</item>
+		<item name="maxHeight">76dip</item>
+		<item name="indicatorName">BallPulseIndicator</item>
+	</style>
+
+	<style name="AVLoadingIndicatorView.Small">
+		<item name="minWidth">24dip</item>
+		<item name="maxWidth">24dip</item>
+		<item name="minHeight">24dip</item>
+		<item name="maxHeight">24dip</item>
+		<item name="indicatorName">BallPulseIndicator</item>
+	</style>
+
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">  <!--name是我们在使用时要用到的资源的标志，parent是指当前的样式所继承的父类样式-->  
+  		<item name="android:windowFrame">@null</item>  <!-- Dialog的windowFrame框为无 -->
+  		<item name="android:windowIsFloating">true</item>  <!-- 是否浮现在activity之上 -->
+  		<item name="android:windowIsTranslucent">true</item>  <!-- 是否半透明 -->
+  		<item name="android:windowNoTitle">true</item>  <!-- 是否显示title -->
+  		<item name="android:background">@android:color/transparent</item>  <!--  -->
+  		<item name="android:windowBackground">@android:color/transparent</item> <!--这儿也很重要啊，我这儿用了一张透明的.9.png的图，当然用#00000000也是可以的，否则的话这儿出来后有一个黑色的背景-->  
+  		<item name="android:backgroundDimEnabled">true</item>  <!-- 背景是否变暗 -->
+  		<item name="android:backgroundDimAmount">0.5</item>  <!-- 半透明背景的灰度 -->
+ 	</style> 
+
+    <style name="RadioDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert"> 
+  		<item name="android:padding">3dp</item>  <!-- 內縮度 -->  
+ 	</style> 
+</resources>

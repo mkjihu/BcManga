@@ -1,0 +1,26 @@
+<FrameLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/FrameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tpi_checked"
+    tools:context="com.bcmanga.Activity.Cover" >
+
+    <ImageView
+        android:id="@+id/sagerjkoj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/cover_text" />
+
+    <com.bc_manga2.Ui.ProgressBar.ArrowDownloadButton
+        android:id="@+id/arrow_download_button"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center" />
+
+</FrameLayout>

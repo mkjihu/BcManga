@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp" >
+
+        <cn.lightsky.infiniteindicator.InfiniteIndicator
+            android:id="@+id/indicator_default_circle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:indicator_type="indicator_default" >
+        </cn.lightsky.infiniteindicator.InfiniteIndicator>
+
+        <TextView
+            android:id="@+id/item_home_textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:background="@color/home_item_color"
+            android:lines="1"
+            android:maxLines="1"
+            android:padding="3dp"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+
+    </FrameLayout>
+</LinearLayout>

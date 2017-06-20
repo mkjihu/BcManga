@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <!-- 选中状态 -->
+    <item android:state_checked="true" android:color="#ff0000" />
+    <!-- 聚焦
+    <item android:state_focused="true" android:color="#ff0000" />
+     
+    <item android:state_focused="false" android:color="#ff0000"/>
+     -->
+    <!-- 按下动作  -->
+    <item android:state_pressed="true" android:color="#ff0000" />
+    
+    
+    <!-- 一般  -->
+    <item android:color="#89683B" />
+    
+</selector>

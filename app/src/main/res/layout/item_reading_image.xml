@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/FrameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+<!-- 橫向圖片列用 -->
+    <!-- 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/aVLoadingIndicatorView1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        app:indicatorName="BallSpinFadeLoaderIndicator" />
+ 	-->
+ 	<!-- 
+ 	<com.tuyenmonkey.mkloader.MKLoader
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        app:mk_color="#FFF4C1"
+        app:mk_type="TwinFishesSpinner"/>
+ 	-->
+ 	
+ 	<!-- -->
+ 	<com.bc_manga2.Ui.ProgressBar.ProgressWheel
+        android:id="@+id/ProgressBar"
+ 	    android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        app:matProg_progressIndeterminate="true"
+        app:matProg_barWidth="10dp"
+        app:matProg_barColor="@color/colorPrimary"
+        app:matProg_fillRadius="true" />
+ 	   <!-- app:matProg_rimWidth="13dp"
+ 	   	app:matProg_spinSpeed="0.45"
+        app:matProg_barSpinCycleTime="1500"
+        app:matProg_rimColor="#4EFEB3"-->
+ 	
+ 	<!-- 
+    <ProgressBar
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:indeterminate="true" />
+ 	<ProgressBar
+ 	    android:id="@+id/progressBar1"
+ 	    style="?android:attr/progressBarStyleLarge"
+ 	    android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center" />
+	-->
+	
+	
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="0"
+        android:textColor="@color/textcolor4"
+        android:textSize="35sp" />
+    
+ 	<com.bc_manga2.Ui.ImageView.TouchImageView
+ 	    android:id="@+id/TouchImage"
+ 	    android:layout_width="match_parent"
+ 	    android:layout_height="match_parent"
+ 	    android:layout_gravity="center"
+ 	    />
+	<!-- android:scaleType="fitCenter" -->
+
+</FrameLayout>

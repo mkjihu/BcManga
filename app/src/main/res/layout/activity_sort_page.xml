@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bc_manga2.SortPage" >
+    <!--  -->
+		<android.support.v7.widget.Toolbar
+    		    android:id="@+id/sort_page_Toolbar"
+    		    android:layout_width="match_parent"
+    		    android:layout_height="48dp"
+    		    app:contentInsetLeft="0dp"
+ 				app:contentInsetStart="0dp"
+ 				app:layout_collapseMode="pin"
+    		    android:background="@color/colorPrimary" >
+
+    		    <!--   android:background="@color/colorPrimary" -->
+
+    			<FrameLayout
+    			    android:layout_width="match_parent"
+    			    android:layout_height="wrap_content" >
+
+    			    <ImageView
+    			        android:id="@+id/back_icon"
+    			        android:layout_width="wrap_content"
+    			        android:layout_height="match_parent"
+    			        android:layout_gravity="center|left"
+    			        android:layout_marginBottom="0dp"
+    			        android:minWidth="48dp"
+    			        android:layout_marginLeft="0dp"
+    			        android:layout_marginTop="0dp"
+    			        android:clickable="true"
+    			        android:src="@drawable/ic_backicon" />
+    			    
+    			                    <TextView
+    			                        android:id="@+id/title0"
+    			                        android:layout_width="wrap_content"
+    			                        android:layout_height="wrap_content"
+    			                        android:layout_gravity="center"
+    			                        android:text=" "
+    			                        android:textColor="@color/textcolor4"
+    			                        android:textSize="15sp"
+    			                        android:textStyle="bold" />
+
+    			</FrameLayout>
+    
+    		</android.support.v7.widget.Toolbar> 
+    <com.andview.refreshview.XRefreshView
+        android:id="@+id/xrefreshview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_test_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+    </com.andview.refreshview.XRefreshView>
+</LinearLayout>

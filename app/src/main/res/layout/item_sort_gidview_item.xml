@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="vertical" >
+    
+   
+    <android.support.v7.widget.CardView
+        android:id="@+id/item_sort_card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_sousuoitom_h"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/sort_itemtv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:text="TextView"
+            android:textColor="@color/tpi_checked"
+            android:textSize="@dimen/item_sort_text_size" />
+
+    </android.support.v7.widget.CardView>
+    
+    <!-- 
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/imageg1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_sousuoitom_h"
+        android:layout_gravity="center"
+        fresco:fadeDuration="450"
+        fresco:placeholderImage="@mipmap/pd_img_list_default"
+        fresco:placeholderImageScaleType="centerCrop"
+        fresco:roundingBorderWidth="0.6dp"
+		fresco:roundingBorderColor="#99000000"
+        fresco:roundedCornerRadius="4dp" />
+ 	-->
+
+    <TextView
+        android:id="@+id/sort_itemtv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:lines="1"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:text="TextView"
+        android:textColor="@color/ed_textcolor"
+        android:typeface="serif" />
+
+</LinearLayout>

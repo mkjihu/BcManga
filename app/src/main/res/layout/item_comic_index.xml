@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ComicIndexItem_frame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/item_button_normal"
+    android:clickable="true" >
+
+ <TextView
+     android:id="@+id/ComicIndexItem_text"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_gravity="center"
+     android:layout_marginBottom="8dp"
+     android:layout_marginLeft="5dp"
+     android:layout_marginRight="5dp"
+     android:layout_marginTop="8dp"
+     android:ellipsize="marquee"
+     android:focusable="true"
+     android:focusableInTouchMode="true"
+     android:marqueeRepeatLimit="marquee_forever"
+     android:scrollHorizontally="true"
+     android:singleLine="true"
+     android:text="0"
+     android:textSize="14sp"
+     android:textColor="@drawable/item_comicindex_text" />
+</FrameLayout>
+
+
+
+<!-- 
+		<com.bc_manga2.Ui.Textview.ScrollingTextView
+			android:id="@+id/ComicIndexItem_text"    
+			android:layout_width="wrap_content"  
+        	android:layout_height="wrap_content"           
+        	android:singleLine="true"  
+        	android:ellipsize="marquee"   
+        	android:focusable="true"   
+        	android:marqueeRepeatLimit="marquee_forever"   
+        	android:focusableInTouchMode="true"   
+        	android:scrollHorizontally="true"   
+		    android:layout_gravity="center"
+     		android:layout_marginBottom="8dp"
+     		android:layout_marginLeft="5dp"
+     		android:layout_marginRight="5dp"
+     		android:layout_marginTop="8dp"
+     		android:textSize="14sp"
+            android:textColor="@drawable/item_comicindex_text"
+            android:text="0"
+        
+        />
+ -->
+
+<!-- 
+ <TextView
+     android:id="@+id/ComicIndexItem_text"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_gravity="center"
+     android:layout_marginBottom="8dp"
+     android:layout_marginLeft="5dp"
+     android:layout_marginRight="5dp"
+     android:layout_marginTop="8dp"
+     android:ellipsize="marquee"
+     android:focusable="true"
+     android:focusableInTouchMode="true"
+     android:marqueeRepeatLimit="marquee_forever"
+     android:scrollHorizontally="true"
+     android:singleLine="true"
+     android:text="0"
+     android:textSize="14sp"
+     android:textColor="@drawable/item_comicindex_text" />
+
+
+ -->
+<!-- 
+ -->
+<!-- 
+				<com.bc_manga2.Ui.Textview.MarqueeTextView
+                android:id="@+id/ComicIndexItem_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+     android:layout_marginBottom="8dp"
+     android:layout_marginLeft="5dp"
+     android:layout_marginRight="5dp"
+     android:layout_marginTop="8dp"
+		    	android:focusable="true"
+		    	android:textSize="12sp"
+                android:textColor="@drawable/item_comicindex_text"
+                android:text="0"/>
+
+ -->

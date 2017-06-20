@@ -1,0 +1,107 @@
+<com.bc_manga2.Ui.Fualay 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fualay"
+    android:background="@color/image_icback_color2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bc_manga2.ComicReadingPage" >
+
+		<android.support.v7.widget.RecyclerView
+		    android:id="@+id/recycler_view"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:clipToPadding="false"
+		    android:scrollbarStyle="outsideOverlay"
+		    android:scrollbars="vertical"
+		    android:visibility="gone" >
+
+		</android.support.v7.widget.RecyclerView>
+    <com.bc_manga2.Ui.ViewPager.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" >
+    </com.bc_manga2.Ui.ViewPager.ViewPager2>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center|right"
+        android:background="@drawable/rounded_corners_lay" >
+
+        <TextView
+            android:id="@+id/number1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="0"
+            android:textColor="@color/textcolor4" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:text="/"
+            android:textColor="@color/textcolor4" />
+
+        <TextView
+            android:id="@+id/number2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/textcolor4" />
+
+        <TextView
+            android:id="@+id/titlename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="TextView"
+            android:textColor="@color/textcolor4" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/wet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <com.tuyenmonkey.mkloader.MKLoader
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:mk_color="#FFF4C1"
+        		app:mk_type="Whirlpool"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/loadtext0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/read_tx1"
+                android:textColor="@color/BarColor"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/loadtext1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/read_tx2"
+                android:textColor="@color/BarColor" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</com.bc_manga2.Ui.Fualay >

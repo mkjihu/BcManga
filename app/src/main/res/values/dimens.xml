@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+	<dimen name="actions_ize">40dp</dimen>
+    <dimen name="home_iconitom_h">150dp</dimen>
+    <dimen name="home_sousuoitom_h">100dp</dimen>
+    <dimen name="sort_fine_h">140dp</dimen>
+    <dimen name="sortitom_h">100dp</dimen>
+  	<dimen name="text_top_pi">3dp</dimen>
+	<dimen name="icne_text_size">13sp</dimen>
+	<dimen name="icne_text_size_eadiobutton">12sp</dimen>  
+	<dimen name="item_sort_text_size">20sp</dimen>  
+	
+	<!-- dimensions -->
+    <dimen name="image_final_width">32dp</dimen>
+    <dimen name="image_setting_width">100dp</dimen>    
+    <dimen name="setting_text_size">16sp</dimen> 
+    <dimen name="setting_home_height">150sp</dimen>  
+     
+     
+     
+     
+</resources>

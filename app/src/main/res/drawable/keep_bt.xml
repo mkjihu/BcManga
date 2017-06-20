@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+  
+	<!-- 选中状态  -->
+    <item android:state_checked="true">
+        <shape>
+           <!-- 填充 
+           <solid android:color="@color/keep_btcolor1" /> -->
+           <!-- 圆角 -->
+           <!-- <corners  android:bottomLeftRadius="21dp"  android:topLeftRadius="21dp" android:topRightRadius="0dp" android:bottomRightRadius="0dp" /> -->
+           <corners android:radius="4dp" />
+           <!-- 描边 -->  
+           <stroke  android:width="2dp"  android:color="@color/keep_btcolor2" />
+           <!-- 内容离边界的距离 -->  
+           <padding android:left="2dp" android:top="2dp"  android:right="2dp" android:bottom="2dp" />  
+        </shape>
+    </item>
+    
+    <!-- 按下动作 -->
+	<item android:state_pressed="true">
+        <shape>
+           <!-- 填充 
+           <solid android:color="@color/keep_btcolor1" />  -->
+           <!-- 圆角 -->
+           <!-- <corners  android:bottomLeftRadius="21dp"  android:topLeftRadius="21dp" android:topRightRadius="0dp" android:bottomRightRadius="0dp" /> -->
+           <corners android:radius="4dp" /> 
+           <!-- 描边 -->  
+           <stroke   android:width="2dp"  android:color="@color/keep_btcolor2" /> 
+           <!-- 内容离边界的距离 -->  
+           <padding android:left="2dp" android:top="2dp"  android:right="2dp" android:bottom="2dp" /> 
+        </shape>
+    </item>
+	
+	<!-- 聚焦 -->
+    <item android:state_focused="true">
+        <shape> 
+           <!-- 填充 
+           <solid android:color="@color/keep_btcolor1" /> --> 
+           <!-- 圆角 -->
+           <!-- <corners  android:bottomLeftRadius="21dp"  android:topLeftRadius="21dp" android:topRightRadius="0dp" android:bottomRightRadius="0dp" />-->
+           <corners android:radius="4dp" /> 
+           <!-- 描边 -->  
+           <stroke   android:width="2dp"  android:color="@color/keep_btcolor2" />
+           <!-- 内容离边界的距离 -->  
+           <padding android:left="2dp" android:top="2dp"  android:right="2dp" android:bottom="2dp" />  
+        </shape>
+    </item>
+        
+
+    <!-- 是否可用  否-->
+    <item android:state_enabled="false">
+        <shape>
+           <!-- 填充 
+           <solid android:color="@color/keep_btcolor1" />  -->
+           <!-- 圆角 -->
+           <corners android:radius="4dp" />
+           <!-- 描边 -->  
+           <stroke   android:width="2dp"  android:color="@color/keep_btcolor2" /> 
+           <!-- 内容离边界的距离 -->  
+           <padding android:left="2dp" android:top="2dp"  android:right="2dp" android:bottom="2dp" /> 
+        </shape>
+    </item>
+     
+    
+    <!-- 是否可用  可-->
+    <item android:state_enabled="true">
+        <shape>
+           <!-- 填充
+           <solid android:color="@color/keep_btcolor1" />  -->
+           <!-- 圆角 -->
+           <corners android:radius="4dp" /> 
+           <!-- 描边 -->  
+           <stroke   android:width="2dp"  android:color="@color/keep_btcolor3" />  
+           <!-- 内容离边界的距离 -->  
+           <padding android:left="2dp" android:top="2dp"  android:right="2dp" android:bottom="2dp" />        
+        </shape>
+    </item>
+        
+    
+    <!-- 一般 -->
+    <item>  
+        <shape>
+           <!-- 填充 
+           <solid android:color="@color/keep_btcolor1" />  -->
+           <!-- 圆角 -->
+           <corners android:radius="4dp" />
+           <!-- 描边 -->  
+           <stroke   android:width="2dp"  android:color="@color/keep_btcolor3" /> 
+           <!-- 内容离边界的距离 -->  
+           <padding android:left="2dp" android:top="2dp"  android:right="2dp" android:bottom="2dp" /> 
+        </shape>
+    </item>       
+	 
+	 
+</selector>

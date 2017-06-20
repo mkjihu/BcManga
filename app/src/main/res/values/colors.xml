@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#79C3C3</color> <!-- Action顏色  #607D8B-->
+    <color name="colorPrimaryDark">#4F9D9D</color><!-- 上方狀態列顏色 #455A64-->
+    <color name="BarColor">#4F9D9D</color><!-- 6.0之後下方條顏色 #455A64-->
+    <color name="colorAccent">#79C3C3</color><!-- CheckBox的颜色 #4CAF50-->
+	
+	<color name="BarColor2">#6FB7B7</color><!-- 選框顏色-->
+	<color name="colorForeground">#6C6C6C</color><!-- 前景色，也就是字体颜色 -->
+	
+	<color name="ed_textcolor">#272727</color><!-- 選框字 黑-->
+	<color name="ed_hintcolor">#BEBEBE</color><!-- 選框顏色-藍 -->
+	<color name="checkcolor1">#0072E3</color><!-- 選框顏色-藍 -->
+	
+	<color name="textcolor1">#262626</color><!-- 文字顏色-半黑 -->
+	<color name="textcolor2">#D0021B</color><!-- 文字顏色-红 -->
+	<color name="textcolor3">#FF0000</color><!-- 文字顏色-红2 -->
+	<color name="textcolor4">#FFFFFF</color><!-- 文字顏色-白 -->
+	<color name="mess_color1">#75CC33</color><!-- 文字顏色- -->
+	<color name="tpi_checked">#FFFFFFFF</color>
+	<color name="title_textcolor1">#FCEE21</color><!-- 文字顏色-黃-->
+	
+	<color name="home_item_color">#33455A64</color>  
+	<color name="image_icback_color">#262626</color>  <!-- 背景黑 -->
+	<color name="image_icback_color2">#000000</color>  <!-- 背景黑2 -->
+    <!--  -->    
+    <color name="titlebad_color1">#00913A</color><!-- 文字顏色-黃-->
+    
+    <color name="keep_btcolor1">#FFFFFF</color><!-- 顏色-白 -->
+    <color name="keep_btcolor2">#efb336</color><!-- 顏色-黃 -->	
+    <color name="keep_btcolor3">#8a8a8a</color><!-- 顏色-灰 -->	
+    
+    
+    <color name="setting_item_back">#FFFFFF</color><!-- 顏色-灰 -->	
+    
+    <!--  -->
+    <color name="toollbar">#FFFFFF</color>
+    <color name="textcolo">#00E3E3</color>
+    <color name="comicitemrtext">#FFFFFF</color>
+    
+    <color name="comicitemrtext2">#FF5151</color>
+    
+    
+    <color name="sortcolo1">#A2666F</color>
+    <color name="sortcolo2">#F49390</color>
+    <color name="sortcolo3">#F45866</color>
+    <color name="sortcolo4">#C45AB3</color>
+    <color name="sortcolo5">#631A86</color>
+    <color name="sortcolo6">#CBD4C2</color>
+    <color name="sortcolo7">#FB8B24</color>
+    <color name="sortcolo8">#51A3A3</color>
+    <color name="sortcolo9">#75485E</color>
+    <color name="sortcolo10">#CB904D</color>
+    <color name="sortcolo11">#DFCC74</color>
+    <color name="sortcolo12">#BF3100</color>
+    <color name="sortcolo13">#8D5B4C </color>
+    <color name="sortcolo14">#F79256</color>
+    <color name="sortcolo15">#306BAC</color>
+    
+</resources>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android1:id="@+id/scrollView1"
+        android1:layout_width="match_parent"
+        android1:layout_height="match_parent" >
+
+        <LinearLayout
+            android1:layout_width="match_parent"
+            android1:layout_height="match_parent"
+            android1:orientation="vertical" >
+
+            <FrameLayout
+                android1:layout_width="match_parent"
+                android1:layout_height="@dimen/setting_home_height" >
+
+                <com.bc_manga2.Ui.ImageView.CircleImageView
+                    android1:id="@+id/profile_image"
+                    android1:layout_width="@dimen/image_setting_width"
+                    android1:layout_height="@dimen/image_setting_width"
+                    android1:layout_gravity="center"
+                    android1:src="@drawable/toyudo"
+                    app:civ_border_color="#FFFFFF"
+                    app:civ_border_width="4dp" />
+            </FrameLayout>
+
+            <View
+                android1:layout_width="match_parent"
+                android1:layout_height="1dp"
+                android1:background="#55000000" />
+
+            <FrameLayout
+                android1:id="@+id/Version"
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:background="@color/setting_item_back"
+                android1:padding="8dp" >
+
+                <TextView
+                    android1:id="@+id/TextView04"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|left"
+                    android1:text="@string/seeting_tv2"
+                    android1:textSize="@dimen/setting_text_size" />
+
+                <TextView
+                    android1:id="@+id/TextView08"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="right"
+                    android1:text="1"
+                    android1:textSize="@dimen/setting_text_size" />
+            </FrameLayout>
+
+            <FrameLayout
+                
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_marginTop="5dp"
+                android1:background="@color/setting_item_back"
+                android1:padding="8dp"
+                android1:visibility="gone" >
+
+                <TextView
+                    android1:id="@+id/TextView02"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|left"
+                    android1:text="@string/seeting_tv3"
+                    android1:textSize="@dimen/setting_text_size" />
+
+                <TextView
+                    android1:id="@+id/TextView01"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|right"
+                    android1:text="2"
+                    android1:textSize="@dimen/setting_text_size" />
+            </FrameLayout>
+
+            <FrameLayout
+                android1:id="@+id/ClearCache"
+                
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_marginTop="5dp"
+                android1:background="@color/setting_item_back"
+                android1:padding="8dp" >
+
+                <TextView
+                    android1:id="@+id/TextView06"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|left"
+                    android1:text="@string/seeting_tv1"
+                    android1:textSize="@dimen/setting_text_size" />
+
+                <TextView
+                    android1:id="@+id/TextView05"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|right"
+                    android1:text="0.0 mb"
+                    android1:textSize="@dimen/setting_text_size" />
+            </FrameLayout>
+
+            <FrameLayout
+                android1:id="@+id/CheckHome"
+                
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_marginTop="5dp"
+                android1:background="@color/setting_item_back"
+                android1:padding="8dp" >
+
+                <TextView
+                    android1:id="@+id/TextView07"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|left"
+                    android1:text="@string/seeting_tv5"
+                    android1:textSize="@dimen/setting_text_size" />
+
+                <LinearLayout
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="match_parent"
+                    android1:layout_gravity="right|center" >
+
+                    <TextView
+                        android1:id="@+id/CheckHome_tv"
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="wrap_content"
+                        android1:layout_gravity="center"
+                        android1:text=" "
+                        android1:textSize="@dimen/setting_text_size" />
+
+                    <ImageView
+                        android1:id="@+id/ImageView01"
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="wrap_content"
+                        android1:src="@mipmap/even_icon" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android1:id="@+id/ReadingDirection"
+                
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_marginTop="5dp"
+                android1:background="@color/setting_item_back"
+                android1:padding="8dp" >
+
+                <TextView
+                    android1:id="@+id/TextView09"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|left"
+                    android1:text="@string/seeting_tv6"
+                    android1:textSize="@dimen/setting_text_size" />
+
+                <TextView
+                    android1:id="@+id/TextView10"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|right"
+                    android1:text="橫向"
+                    android1:textSize="@dimen/setting_text_size" />
+            </FrameLayout>
+
+            <FrameLayout
+                android1:id="@+id/loadMode"
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_marginTop="5dp"
+                android1:background="@color/setting_item_back"
+                android1:padding="8dp" >
+
+                <TextView
+                    android1:id="@+id/TextView13"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|left"
+                    android1:text="@string/seeting_tv7"
+                    android1:textSize="@dimen/setting_text_size" />
+
+                <TextView
+                    android1:id="@+id/TextView14"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="right"
+                    android1:text="模式1"
+                    android1:textSize="@dimen/setting_text_size" />
+            </FrameLayout>
+
+            <FrameLayout
+                android1:id="@+id/SearchSettings"
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_marginTop="5dp"
+                android1:background="@color/setting_item_back"
+                android1:padding="8dp" >
+
+                <TextView
+                    android1:id="@+id/TextView12"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center|left"
+                    android1:text="@string/seeting_tv8"
+                    android1:textSize="@dimen/setting_text_size" />
+
+                <LinearLayout
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="match_parent"
+                    android1:layout_gravity="right" >
+
+                    <TextView
+                        android1:id="@+id/TextView15"
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="wrap_content"
+                        android1:layout_gravity="center"
+                        android1:textSize="@dimen/setting_text_size" />
+
+                    <ImageView
+                        android1:id="@+id/ImageView02"
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="wrap_content"
+                        android1:src="@mipmap/even_icon" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android1:layout_width="match_parent"
+                android1:layout_height="match_parent"
+                android1:layout_marginTop="5dp"
+                android1:orientation="vertical" >
+
+                <FrameLayout
+                    android1:layout_width="match_parent"
+                    android1:layout_height="wrap_content"
+                    android1:padding="8dp" >
+
+                    <TextView
+                        android1:id="@+id/textView1"
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="wrap_content"
+                        android1:layout_gravity="center|left"
+                        android1:text="@string/seeting_tv4"
+                        android1:textSize="@dimen/setting_text_size" />
+
+                </FrameLayout>
+
+				<LinearLayout
+				    android1:layout_width="wrap_content"
+				    android1:layout_height="wrap_content"
+				    android1:layout_gravity="center" >
+
+					<com.bc_manga2.Ui.ImageView.CircleImageView
+					    android1:id="@+id/aie"
+					    android1:layout_width="40dp"
+					    android1:layout_height="40dp"
+					    android1:src="@mipmap/setting_t"
+					    app:civ_border_color="#FFFFFF"
+					    app:civ_border_width="2dp" />
+
+					<TextView
+					    android1:id="@+id/textView2"
+					    android1:layout_width="wrap_content"
+					    android1:layout_height="wrap_content"
+					    android1:layout_gravity="center"
+					    android1:layout_marginTop="5dp"
+					    android1:text="@string/seeting_tvGd" />
+
+				</LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

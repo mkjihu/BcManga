@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bc_Manga2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_splash_page">SplashPage</string>
+    <string name="title_activity_text_ui">TextUIActivity</string>
+    <string name="on_Network_Error">網路中斷，使用暫存資料。</string>
+    <string name="expand_string">展開</string>
+    <string name="collapsed_string">收起</string>
+    <string name="comic_tx1">作者：</string>
+    <string name="comic_tx2">類型：</string>
+    <string name="comic_tx3">更新日期：</string>
+    <string name="keep_tx1">收藏</string>
+    <string name="keep_tx2">已收藏</string>
+    <string name="read_tx1">初次加載會比較久</string>
+    <string name="read_tx2">資料加載中...</string>
+    
+    <string name="seeting_tv1">清除緩存</string>
+    <string name="seeting_tv2">當前版本(檢查最新版本)</string>
+    <string name="seeting_tv3">當前資料庫版本</string>
+    <string name="seeting_tv4">關於APP</string>
+    <string name="seeting_tv5">加載主站</string>     
+    <string name="seeting_tv6">閱覽方向</string>
+    <string name="seeting_tv7">加載模式</string>
+    <string name="seeting_tv8">搜尋設定</string>
+    <string name="seeting_tv9">背景顏色</string> 
+     
+    <string name="seeting_tvGd">努力補完功能中...</string>
+     
+     
+    <string name="title_activity_sort_page">SortPage</string>
+    <string name="title_activity_text_ui2">TextUI2Activity</string>
+
+</resources>

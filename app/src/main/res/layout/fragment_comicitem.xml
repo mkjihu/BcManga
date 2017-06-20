@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/FrameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.bc_manga2.Ui.ViewPager.PhotoViewPager
+        android:id="@+id/photoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </com.bc_manga2.Ui.ViewPager.PhotoViewPager>
+
+</FrameLayout>
